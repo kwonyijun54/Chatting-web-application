@@ -72,7 +72,7 @@ io.on('connection', (socket) => {
         const user = removeUser(socket.id)
 
         if (user) {
-            io.to(user.chatroom).emit('message', generateMessage('Admin', `${user.username} has left`))
+            io.to(user.chatroom).emit('Self Generated Message', generateMessage('Admin', `${user.username} has left`))
             // DATA FOR SIDEBAR
             io.to(user.chatroom).emit('roomData', {
                 chatroom: user.chatroom,
