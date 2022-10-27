@@ -1,5 +1,5 @@
 // Client side
-const socket = io() 
+const socket = io()
 
 // ELEMENTS
 const $messageForm = document.querySelector('#message-form')
@@ -9,9 +9,11 @@ const $sendLocationButton = document.querySelector('#send-location')
 const $messages = document.querySelector('#messages')
 
 // TEMPLATES
-const messageTemplate = document.querySelector('#message-template').innerHTML //accessing the html inside (div)
+const messageTemplate = document.querySelector('#message-template').innerHTML
+
 const locationMessageTemplate = document.querySelector('#location-message-template').innerHTML
 const sidebarTemplate = document.querySelector('#sidebar-template').innerHTML
+const messageUsernameColored = document.querySelector('#message-username')
 
 // OPTIONS
 const { username, chatroom } = Qs.parse(location.search, { ignoreQueryPrefix: true })

@@ -115,7 +115,7 @@ button:disabled {
 /* Message Styles */
 
 .message {
-    margin-bottom: 16px;   
+    margin-bottom: 16px;
 }
 
 .message__name {
@@ -126,7 +126,14 @@ button:disabled {
 
 .message__meta {
     color: #777;
-    font-size: 14px;
+    font-size: 12px;
+}
+
+.message__border {
+    border-left: 2px solid #7C5CBF;
+    border-radius: 15px;
+    width: fit-content;
+    padding-left: 5px;
 }
 
 .message a {

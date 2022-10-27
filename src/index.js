@@ -33,7 +33,7 @@ io.on('connection', (socket) => {
 
         // EMITTING TO CLIENT
         socket.emit('message', generateMessage('Self Generated Message', 'Welcome to ' + user.chatroom + ' chatroom!'))
-        socket.broadcast.to(user.chatroom).emit('message', generateMessage('Admin', `${user.username} has joined the chat room!`))
+        socket.broadcast.to(user.chatroom).emit('message', generateMessage('Self Generated Message', `${user.username} has joined the chat room!`))
         // DATA FOR SIDEBAR
         io.to(user.chatroom).emit('roomData', {
             chatroom: user.chatroom,
@@ -51,7 +51,7 @@ io.on('connection', (socket) => {
         const filter = new Filter()
         if (filter.isProfane(message)) {
             return callback('Profanity is not allowed.')
-        } 
+        }
 
         io.to(user.chatroom).emit('message', generateMessage(user.username, message))
         callback()
