@@ -32,7 +32,7 @@ io.on('connection', (socket) => {
         socket.join(user.chatroom)
 
         // EMITTING TO CLIENT
-        socket.emit('message', generateMessage('Admin', 'Welcome'))
+        socket.emit('message', generateMessage('Self Generated Message', 'Welcome to ' + user.chatroom + ' chatroom!'))
         socket.broadcast.to(user.chatroom).emit('message', generateMessage('Admin', `${user.username} has joined the chat room!`))
         // DATA FOR SIDEBAR
         io.to(user.chatroom).emit('roomData', {
