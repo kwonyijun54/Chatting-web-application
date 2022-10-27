@@ -13,6 +13,7 @@ const server = http.createServer(app)
 // Configure socketio to work with server
 const io = socketio(server)
 
+// HEROKU
 const port = process.env.PORT || 3000
 const publicDirectoryPath = path.join(__dirname, '../public')
 app.use(express.static(publicDirectoryPath))
@@ -81,7 +82,6 @@ io.on('connection', (socket) => {
     })
 }) 
 
-// Listening on port 3000
 server.listen(port, () => {
     console.log(`Server is up on port ${port}!`)
 })
