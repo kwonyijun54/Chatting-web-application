@@ -6,6 +6,7 @@ const socketio = require('socket.io')
 const Filter = require('bad-words')
 const { generateMessage, generateLocationMessage } = require('./utils/messages')
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./utils/users')
+const { getNumberOfUsersInRoom } = require('./utils/users')
 
 const app = express()
 // Socketio expects a raw http server
@@ -35,9 +36,14 @@ io.on('connection', (socket) => {
         socket.emit('message', generateMessage('Self Generated Message', 'Welcome to ' + user.chatroom + ' chatroom!'))
         socket.broadcast.to(user.chatroom).emit('message', generateMessage('Self Generated Message', `${user.username} has joined the chat room!`))
         // DATA FOR SIDEBAR
+        // io.to(user.chatroom).emit('roomData', {
+        //     chatroom: user.chatroom,
+        //     users: getUsersInRoom(user.chatroom)
+        // })
         io.to(user.chatroom).emit('roomData', {
             chatroom: user.chatroom,
-            users: getUsersInRoom(user.chatroom)
+            users: getUsersInRoom(user.chatroom),
+            totalUsers: getNumberOfUsersInRoom(user.chatroom)
         })
 
         callback()
@@ -74,9 +80,14 @@ io.on('connection', (socket) => {
         if (user) {
             io.to(user.chatroom).emit('message', generateMessage('Self Generated Message', `${user.username} has left`))
             // DATA FOR SIDEBAR
+            // io.to(user.chatroom).emit('roomData', {
+            //     chatroom: user.chatroom,
+            //     users: getUsersInRoom(user.chatroom)
+            // })
             io.to(user.chatroom).emit('roomData', {
                 chatroom: user.chatroom,
-                users: getUsersInRoom(user.chatroom)
+                users: getUsersInRoom(user.chatroom),
+                totalUsers: getNumberOfUsersInRoom(user.chatroom)
             })
         }
     })

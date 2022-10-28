@@ -189,3 +189,15 @@ button:disabled {
     font-weight: 300;
     padding: 12px 24px 0 24px;
 }
+
+.exit {
+    position: relative;
+}
+
+.exit-button {
+    display: flex;
+    flex-shrink: 0;
+    position: absolute;
+    bottom: 0;
+    margin: 10px;
+}

@@ -47,9 +47,14 @@ const getUsersInRoom = (chatroom) => {
     return users.filter((user) => user.chatroom === chatroom)
 }
 
+const getNumberOfUsersInRoom = (chatroom) => {
+    return users.length
+}
+
 module.exports = {
     addUser,
     removeUser,
     getUser,
-    getUsersInRoom
+    getUsersInRoom,
+    getNumberOfUsersInRoom
 }
