@@ -65,7 +65,6 @@ io.on('connection', (socket) => {
 
     socket.on('sendLocation', (coords, callback) => {
         const user = getUser(socket.id)
-
         // GOOGLE MAP
         // io.to(user.chatroom).emit('locationMessage', generateLocationMessage(user.username, `https://google.com/maps?q=${coords.latitude},${coords.longitude}`))
         // NAVER MAP
