@@ -67,9 +67,9 @@ io.on('connection', (socket) => {
         const user = getUser(socket.id)
 
         // GOOGLE MAP
-        io.to(user.chatroom).emit('locationMessage', generateLocationMessage(user.username, `https://google.com/maps?q=${coords.latitude},${coords.longitude}`))
+        // io.to(user.chatroom).emit('locationMessage', generateLocationMessage(user.username, `https://google.com/maps?q=${coords.latitude},${coords.longitude}`))
         // NAVER MAP
-        // io.to(user.chatroom).emit('locationMessage', generateLocationMessage(user.username, `https://map.naver.com/v5/?c=${coords.latitude},${coords.longitude}`))
+        io.to(user.chatroom).emit('locationMessage', generateLocationMessage(user.username, `https://map.naver.com/v5/?c=${coords.latitude},${coords.longitude}`))
         callback()
     })
 
